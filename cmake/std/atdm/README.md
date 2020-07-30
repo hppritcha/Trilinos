@@ -642,7 +642,7 @@ example, skip the configure, skip the build, skip running tests, etc.
 * <a href="#sems-rhel7-environment">SEMS RHEL7 Environment</a>
 * <a href="#spack-rhel-environment">Spack RHEL Environment</a>
 * <a href="#cee-rhel6-and-rhel7-environment">CEE RHEL6 and RHEL7 Environment</a>
-* <a href="#waterman">waterman</a>
+* <a href="#weaver">weaver</a>
 * <a href="#ats-2">ATS-2</a>
 * <a href="#astra-vanguard-arm-system">ASTRA (Vanguard ARM System)</a>
 * <a href="#ats-1">ATS-1</a>
@@ -1036,10 +1036,10 @@ this can be overridden by setting the env var
 cmake/std/atdm/load-env.sh <build_name>`.
 
 
-### waterman
+### weaver
 
-Once logged on to 'waterman' (SRN), one can directly configure and build on
-the login node (being careful not to overload the node) using the `waterman`
+Once logged on to 'weaver' (SON), one can directly configure and build on
+the login node (being careful not to overload the node) using the `weaver`
 env.  But to run the tests, one must run on the compute nodes using the `bsub`
 command to run if using a CUDA build.  For example, to configure, build and
 run the tests for the default `cuda-debug` build for say `MueLu` (after
@@ -1064,7 +1064,7 @@ $ bsub -x -Is -n 20 ctest -j2
 **NOTE:** While the above example shows loading the environment, configuring
 and building on the login node, one can also do these on the compute nodes as
 well.  In fact, that is what the CTest -S drivers do in automated testing on
-'waterman'.  To get an interactive compute node, do:
+'weaver'.  To get an interactive compute node, do:
 
 ```
 $ bsub -x -Is -n 20 bash
@@ -1485,13 +1485,13 @@ used to define a default file name:
 If that file exists, then it is set as the default for the cmake cache
 variable `ATDM_TWEAKS_FILES` (prints to STDOUT) and that file is included and
 its options are set as CMake cache variables.  For example, this is what the
-output looks like for a build on 'waterman':
+output looks like for a build on 'weaver':
 
 ```
 -- Reading in configuration options from cmake/std/atdm/ATDMDevEnv.cmake ...
 -- ATDM_BUILD_NAME_KEYS_STR='CUDA-9.2_RELEASE-DEBUG_CUDA_POWER9_VOLTA70'
--- ATDM_TWEAKS_FILES='<...>/cmake/std/atdm/waterman/tweaks/CUDA-9.2_RELEASE-DEBUG_CUDA_POWER9_VOLTA70.cmake'
--- Including ATDM build tweaks file <...>/cmake/std/atdm/waterman/tweaks/CUDA-9.2_RELEASE-DEBUG_CUDA_POWER9_VOLTA70.cmake ...
+-- ATDM_TWEAKS_FILES='<...>/cmake/std/atdm/weaver/tweaks/CUDA-9.2_RELEASE-DEBUG_CUDA_POWER9_VOLTA70.cmake'
+-- Including ATDM build tweaks file <...>/cmake/std/atdm/weaver/tweaks/CUDA-9.2_RELEASE-DEBUG_CUDA_POWER9_VOLTA70.cmake ...
 ```
 
 In addition, if the file:
@@ -1738,7 +1738,7 @@ they support are:
 
 * `tlcc2/`: Supports SNL HPC TLCC-2 machines 'chama', 'skybridge', etc..
 
-* `waterman/`: Supports GNU and CUDA builds on the SRN machine 'waterman'.
+* `weaver/`: Supports GNU and CUDA builds on the SON machine 'weaver'.
 
 * `ats2/`: Supports GNU and CUDA builds on the SRN machine 'vortex'.
 
@@ -1810,4 +1810,4 @@ scripts in the offically defined configurations under:
 
 * [cmake/std/atdm/<system_name>/](.)
 
-where `<system_name>` is `ride`, `waterman`, `tlcc2`, etc.
+where `<system_name>` is `ride`, `weaver`, `tlcc2`, etc.
